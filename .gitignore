@@ -31,5 +31,6 @@ bench/**
 */.nrepl-port
 .idea
 *.iml
-jepsen/doc
 .eastwood
+.clj-kondo
+.lsp
