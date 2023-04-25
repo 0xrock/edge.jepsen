@@ -44,30 +44,40 @@ services:
     hostname: n1
     ports:
       - "10002"
+      - "10000"
+      - "1478"
   n2:
     << : *default-node
     container_name: jepsen-n2
     hostname: n2
     ports:
       - "10002"
+      - "10000"
+      - "1478"
   n3:
     << : *default-node
     container_name: jepsen-n3
     hostname: n3
     ports:
       - "10002"
+      - "10000"
+      - "1478"
   n4:
     << : *default-node
     container_name: jepsen-n4
     hostname: n4
     ports:
       - "10002"
+      - "10000"
+      - "1478"
   n5:
     << : *default-node
     container_name: jepsen-n5
     hostname: n5
     ports:
       - "10002"
+      - "10000"
+      - "1478"
 
 networks:
   jepsen:

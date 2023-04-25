@@ -33,4 +33,6 @@ RUN apt-get install -qy build-essential bzip2 curl faketime iproute2 iptables ip
 
 EXPOSE 22
 EXPOSE 10002
+EXPOSE 10000
+EXPOSE 1478
 CMD ["/usr/local/bin/boot-debian-base"]
