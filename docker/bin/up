@@ -124,7 +124,7 @@ if [ -z "${DEV}" ]; then
     # Dockerfile does not allow `ADD ..`. So we need to copy it here in setup.
     INFO "Copying .. to control/jepsen"
     (
-        (cd ..; tar --exclude=./docker --exclude=./.git --exclude-ignore=.gitignore -cf - .)  | tar Cxf ./control/jepsen -
+        (cd ..; tar --exclude=./docker --exclude=./.git --exclude=./jepsen/web3/node_modules --exclude-ignore=.gitignore -cf - .)  | tar Cxf ./control/jepsen -
     )
 fi
 

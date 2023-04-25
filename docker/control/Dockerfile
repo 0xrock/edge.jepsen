@@ -21,6 +21,10 @@ RUN apt-get -y -q update && \
     graphviz \
     dos2unix
 
+RUN curl -sL https://deb.nodesource.com/setup_18.x | bash - \
+  && apt-get install -y nodejs \
+  && curl -L https://www.npmjs.com/install.sh | sh
+
 RUN wget https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein && \
     mv lein /usr/bin && \
     chmod +x /usr/bin/lein && \
@@ -29,6 +33,7 @@ RUN wget https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein
 # without --dev flag up.sh copies jepsen to these subfolders
 # with --dev flag they are empty until mounted
 COPY jepsen/jepsen /jepsen/jepsen/
+RUN if [ -f /jepsen/jepsen/project.clj ]; then cd /jepsen/jepsen/web3 && npm install; fi
 RUN if [ -f /jepsen/jepsen/project.clj ]; then cd /jepsen/jepsen && lein install; fi
 COPY jepsen /jepsen/
 
