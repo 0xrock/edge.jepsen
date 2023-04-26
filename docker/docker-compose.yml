@@ -37,7 +37,8 @@ services:
     ports:
       - "8080"
     networks:
-      - jepsen
+      jepsen:
+        ipv4_address: 172.26.0.16
   n1:
     << : *default-node
     container_name: jepsen-n1
@@ -46,6 +47,9 @@ services:
       - "10002"
       - "10000"
       - "1478"
+    networks:
+      jepsen:
+        ipv4_address: 172.26.0.11
   n2:
     << : *default-node
     container_name: jepsen-n2
@@ -54,6 +58,9 @@ services:
       - "10002"
       - "10000"
       - "1478"
+    networks:
+      jepsen:
+        ipv4_address: 172.26.0.12
   n3:
     << : *default-node
     container_name: jepsen-n3
@@ -62,6 +69,9 @@ services:
       - "10002"
       - "10000"
       - "1478"
+    networks:
+      jepsen:
+        ipv4_address: 172.26.0.13
   n4:
     << : *default-node
     container_name: jepsen-n4
@@ -70,6 +80,9 @@ services:
       - "10002"
       - "10000"
       - "1478"
+    networks:
+      jepsen:
+        ipv4_address: 172.26.0.14
   n5:
     << : *default-node
     container_name: jepsen-n5
@@ -78,6 +91,13 @@ services:
       - "10002"
       - "10000"
       - "1478"
+    networks:
+      jepsen:
+        ipv4_address: 172.26.0.15
 
 networks:
   jepsen:
+    driver: bridge
+    ipam:
+      config:
+      - subnet: 172.26.0.0/24
